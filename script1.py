@@ -1,20 +1,17 @@
-#!/usr/bin/python
 import smtplib
+sender = "500060649@stu.upes.ac.in"
+receiver = "ishitasinghal08@gmail.com"
 
-sender = '500060649@stu.upes.ac.in'
-receivers = ['ishitasinghal08@gmail.com']
+pswd = input("Enter passsowrd for gmail- 50060649@stu.upes.ac.in")
 
-message = """From: From Person <500060649@stu.upes.ac.in>
-To: To Person <ishitasinghal08@gmail.com>
+message = "Hey!  I have been sent via python!"
 
-Subject: SMTP e-mail test
+server = smtplib.SMPT('smtp.gmail.com', 587)
+server.starttls()
+server.login(sender, pswd)
+print("CONGRATULATION")
+print("Login successfull!!")
 
-This is a test e-mail message.
-"""
+server.sendmail(sender, receiver, message)
 
-try:
-    smtpObj = smtplib.SMTP('localhost')
-    smtpObj.sendmail(sender, receivers, message)
-    print("Successfully sent email")
-except (OSError, smtplib.SMTPException) as e:
-    print("Error: unable to send email")
+print("Email has been succssfully sent to ", receiver)
