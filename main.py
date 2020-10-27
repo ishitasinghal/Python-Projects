@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import joblib
 
-#importing necessary libraries
 app = Flask(__name__)
 
 @app.route("/")
